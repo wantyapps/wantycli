@@ -7,12 +7,13 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"log"
 )
 
 func usage() {
 	fmt.Printf("Usage:\n\n")
 	fmt.Printf("API\n")
-	fmt.Printf("    api --url {string} --username {string} --password {string} | (optional) --action {string}\n")
+	fmt.Printf("    api --url {string} --username {string} --password {string} | (optional) --action {string} | (optional) --debug\n")
 }
 
 func main() {
@@ -22,6 +23,7 @@ func main() {
 	apiUsername := apiCmd.String("username", "", "")
 	apiPassword := apiCmd.String("password", "", "")
 	apiAction := apiCmd.String("action", "", "")
+	debugMode := apiCmd.Bool("debug", false, "")
 	apiCmd.Usage = usage
 	apiCmd.SetOutput(io.Discard)
 	// client := &http.Client{}
@@ -45,12 +47,18 @@ func main() {
 				
 				res, err := client.Do(req)
 				if err != nil {
+					if *debugMode == true {
+						log.Println(err)
+					}
 					fmt.Println("[\033[91mERROR\033[0m] Connection error.")
 					os.Exit(1)
 				}
 				defer res.Body.Close()
 				body, err := ioutil.ReadAll(res.Body)
 				if err != nil {
+					if *debugMode == true {
+						log.Println(err)
+					}
 					fmt.Println("[\033[91mERROR\033[0m] Error reading response body.")
 				}
 
