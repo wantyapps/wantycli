@@ -1,2 +1,2 @@
 install:
-	go build -o main .
+	sh utils/install.sh
