@@ -26,8 +26,6 @@ func main() {
 	debugMode := apiCmd.Bool("debug", false, "")
 	apiCmd.Usage = usage
 	apiCmd.SetOutput(io.Discard)
-	// client := &http.Client{}
-	// req, err := http.NewRequewt("GET", *apiRequestTool, nil)
 	if len(os.Args) < 2 {
 		usage()
 		os.Exit(1)
