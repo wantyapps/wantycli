@@ -1,13 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"flag"
-	"os"
+	"fmt"
 	"io"
 	"io/ioutil"
-	"net/http"
 	"log"
+	"net/http"
+	"os"
 )
 
 func usage() {
@@ -23,7 +23,7 @@ func main() {
 	apiUsername := apiCmd.String("username", "", "")
 	apiPassword := apiCmd.String("password", "", "")
 	apiAction := apiCmd.String("action", "", "")
-	debugMode := apiCmd.Bool("debug", false, "")
+	debugMode := apiCmd.Bool("debug", false, "") // ONLY FOR API CMD: TODO: Need to implement a global debug mode
 	apiCmd.Usage = usage
 	apiCmd.SetOutput(io.Discard)
 	if len(os.Args) < 2 {
