@@ -19,3 +19,9 @@ Commands can be executed using the `wanty [command]` command.
 | Command | Usage                                                                                                                                              |
 |---------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | API     | You can use the `api` command with `wanty api --url [url] --username [username] --password [password]`. More usage can be found in the wanty help. |
+
+## Uninstalling
+
+* Run `make clean`
+
+This will remove the binary file from the `PATH`.
