@@ -1,2 +1,2 @@
 install:
-	sh utils/install.sh
+	@sh utils/install.sh
