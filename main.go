@@ -42,7 +42,7 @@ func main() {
 				if *apiAction != "" {
 					req.Header.Set("action", *apiAction)
 				}
-				
+
 				res, err := client.Do(req)
 				if err != nil {
 					if *debugMode == true {
@@ -65,7 +65,7 @@ func main() {
 				usage()
 				os.Exit(1)
 			}
-			
+
 		default:
 			usage()
 			os.Exit(1)
