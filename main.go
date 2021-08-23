@@ -14,10 +14,13 @@ func usage() {
 	fmt.Printf("Usage:\n\n")
 	fmt.Printf("API\n")
 	fmt.Printf("    api --url {string} --username {string} --password {string} | (optional) --action {string} | (optional) --debug\n")
+	fmt.Printf("FLAGS\n")
+	fmt.Printf("    --help\n")
 }
 
 func main() {
 	// Set up command-line arguments
+	helpFlag := flag.Bool("help", false, "")
 	apiCmd := flag.NewFlagSet("api", flag.ExitOnError)
 	apiURL := apiCmd.String("url", "", "")
 	apiUsername := apiCmd.String("username", "", "")
@@ -29,6 +32,12 @@ func main() {
 	if len(os.Args) < 2 {
 		usage()
 		os.Exit(1)
+	}
+
+	flag.Parse()
+	if *helpFlag == true {
+		usage()
+		os.Exit(0)
 	}
 
 	switch os.Args[1] {
